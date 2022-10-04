@@ -17,7 +17,8 @@
     require('./config/auth')(passport)
 
 
-    
+    const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+    const MONGO_URL = MONGO_PASSWORD ? `mongodb+srv://ricardinhozz:${MONGO_PASSWORD}@cluster0.5anb5uj.mongodb.net/?retryWrites=true&w=majority` : "'mongodb://localhost/blogapp";
 
 
 //Configurations
@@ -53,7 +54,7 @@
     app.set('view engine','handlebars')
     // Mongoose
         mongoose.Promise = global.Promise
-        mongoose.connect('mongodb://localhost/blogapp').then( () => {
+        mongoose.connect(MONGO_URL).then( () => {
             console.log('Connection with MongoDB was sucessful.')}).catch( (err) => {
                 console.log(`Connection with MongoDB met an error: ${err}`)
             })
