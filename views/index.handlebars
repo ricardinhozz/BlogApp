@@ -1,0 +1,26 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Node Blog</h1>
+    <p class="lead">Projeto de Blog desenvolvido com Node.js + Express + MongoDB</p>
+  </div>
+  <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Criar conta</a>
+</div>
+<hr>
+
+<h2>Postagens recentes:</h2>
+
+
+{{#each postagens}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data da publicação: {{categoria.date}}</small><br>
+        <a href="/postagem/{{slug}}"><button class="btn btn-success mt-3">Leia mais</button></a>
+    </div>
+</div>
+{{else}}
+    <h4>Nenhuma postagem registrada</h4>
+{{/each}}
